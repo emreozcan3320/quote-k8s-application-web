@@ -65,8 +65,11 @@ export class AppComponent implements OnInit {
 
   public getRandomQuote(): void {
     let random = Math.floor(Math.random() * this.quoteList.length);
-    while (random === this.quoteIndex) {
-      random = Math.floor(Math.random() * this.quoteList.length);
+    if (random !== 0) {
+      while (random === this.quoteIndex) {
+        console.log(random);
+        random = Math.floor(Math.random() * this.quoteList.length);
+      }
     }
     this.quoteIndex = random;
     this.currentQuote = this.quoteList[this.quoteIndex];

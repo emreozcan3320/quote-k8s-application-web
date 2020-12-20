@@ -13,11 +13,17 @@
     </div>
   </div>
 
-  <div class="quote-wrapper" *ngIf="currentQuote">
+  <div class="quote-wrapper" *ngIf="currentQuote !== undefined else noQuote">
     <p class="quote">{{currentQuote.quote.toLowerCase()}}</p>
     <p class="owner">{{currentQuote.source}}</p>
-    <p class="reference-date">{{currentQuote.date * 1000 | date}}</p>
+    <p class="reference-date">{{currentQuote.date*1000 | date}}</p>
   </div>
+
+  <ng-template #noQuote>
+    <div class="quote-wrapper">
+      <p class="quote">there is no quote</p>
+    </div>
+  </ng-template>
 
   <div class="actions-wrapper">
     <p class="jedi-color" (click)="addQuote()"><i class="fas fa-plus-square"></i></p>
